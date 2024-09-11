@@ -1,8 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Nprogress from 'nprogress'
+import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import LayoutPage from "@/layout/LayoutPage.vue";
 import Recommend from "@/views/ArticlePage/_components/Recommend.vue";
+import ActivityPage from "@/views/ArticlePage/_components/ActivityPage.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -18,9 +19,14 @@ const router = createRouter({
                 component: () => import('@/views/ArticlePage/index.vue'),
                 children: [
                     {
-                        path: '',
+                        path: '/home/part',
                         name: 'recommend',
                         component: Recommend
+                    },
+                    {
+                        path: '/home/part/:id',
+                        name: 'articlePart',
+                        component: ActivityPage
                     }
                 ]
             },
@@ -41,17 +47,25 @@ const router = createRouter({
             }
         ]
     },
+      {
+          path: '/article/:id',
+          name: 'articleDetail',
+          component: () => import('@/views/ArticleDetail/index.vue')
+      }
   ]
 })
 // 开启nprogress进度条
 router.beforeEach((to) => {
     // 处理首页重定向
     if (to.path === '/') {
-        return '/home'
+        return '/home/part'
     }
-    Nprogress.start()
+    if (to.path === '/home') {
+        return '/home/part'
+    }
+    NProgress.start()
 })
 router.afterEach(() => {
-    Nprogress.done()
+    NProgress.done()
 })
 export default router

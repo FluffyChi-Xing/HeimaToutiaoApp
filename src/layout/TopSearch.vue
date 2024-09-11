@@ -17,7 +17,7 @@ const searchValue = ref<string>('')
 <template>
   <div class="w-full h-full flex">
     <div class="w-16 h-full flex justify-center items-center">
-      <van-icon class="w-10 h-10 bg-red-950" />
+      <van-icon class="w-auto h-auto" name="bell" size="20" />
     </div>
     <div style="width: calc(100% - 128px)" class="h-full flex flex-col justify-center">
       <van-search
@@ -28,7 +28,7 @@ const searchValue = ref<string>('')
       />
     </div>
     <div class="w-16 h-full flex justify-center items-center">
-      <van-icon class="w-10 h-10 bg-red-950" />
+      <van-icon class="w-auto h-auto" name="plus" size="20" />
     </div>
   </div>
 </template>

@@ -7,5 +7,16 @@ export declare namespace LayoutTypes {
     export interface ArticleTypes {
         id: number;
         title: string;
+        url?: string;
+    }
+    export interface ArticleCardTypes {
+        id: number;
+        imgUrl?: string[];
+        title: string;
+        isTop: boolean;
+        author?: string;
+        desc?: string;
+        date: string;
+        url?: string;
     }
 }

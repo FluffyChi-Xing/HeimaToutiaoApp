@@ -7,5 +7,10 @@
     {
       "path": "./tsconfig.app.json"
     }
-  ]
+  ],
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "es2017",
+    // 其他选项...
+  }
 }
