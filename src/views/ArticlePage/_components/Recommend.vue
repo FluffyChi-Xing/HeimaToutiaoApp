@@ -37,7 +37,11 @@ async function getList(item: string) {
   })
 }
 async function initArticleList() {
-  await getList(load)
+  await getList(load).catch(() => {
+    showToast('获取文章列表失败')
+    articleList.value = []
+  })
+  isLoading.value = false
 }
 onMounted(async () => {
   await initArticleList()
@@ -54,7 +58,10 @@ async function refresh() {
 }
 async function handleRefresh() {
   isLoading.value = true
-  await refresh();
+  await refresh().catch(() => {
+    showToast('刷新失败')
+    isLoading.value = false
+  })
   isLoading.value = false
 }
 /** ===== 页面刷新-end ===== **/
@@ -82,7 +89,9 @@ async function handleLoad() {
 </script>
 
 <template>
-  <div class="w-full h-full block py-4 overflow-y-auto">
+  <div
+      class="w-full h-full block py-4 overflow-y-auto"
+  >
     <van-pull-refresh
         v-model="isLoading"
         @refresh="handleRefresh"
@@ -92,11 +101,12 @@ async function handleLoad() {
           v-model:loading="loading"
           :finished="finished"
           finished-text="没有更多了"
+          :immediate-check="false"
           @load="handleLoad"
       >
         <div
-            v-if="articleList"
-            class="w-full h-full flex flex-col"
+            v-if="articleList.length > 0"
+            class="w-full h-auto flex flex-col"
         >
           <ArticleCardTemplate
               v-for="(item, index) in articleList"
@@ -113,7 +123,7 @@ async function handleLoad() {
         </div>
         <div
             v-else
-            class="w-full h-full flex flex-col items-center justify-center"
+            class="w-full h-full flex justify-center items-center"
         >
           <van-empty
               description="暂无数据"
