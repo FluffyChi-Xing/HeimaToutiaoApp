@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import LayoutPage from "@/layout/LayoutPage.vue";
@@ -6,7 +6,7 @@ import Recommend from "@/views/ArticlePage/_components/Recommend.vue";
 import ActivityPage from "@/views/ArticlePage/_components/ActivityPage.vue";
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(),
   routes: [
     {
       path: '/',
@@ -51,6 +51,11 @@ const router = createRouter({
           path: '/article/:id',
           name: 'articleDetail',
           component: () => import('@/views/ArticleDetail/index.vue')
+      },
+      {
+          path: '/login',
+          name: 'login',
+          component: () => import('@/views/LoginPage/index.vue')
       }
   ]
 })
