@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
+import {ref} from "vue";
 
 const props = withDefaults(defineProps<{
   id?: number;
@@ -10,6 +11,7 @@ const props = withDefaults(defineProps<{
   desc?: string;
   date?: string;
   url?: string;
+  channel?: string;
 }>(), {
   id: -1,
   imgUrl: () => ['https://picsum.photos/200/300?1', 'https://picsum.photos/200/300?2'],
@@ -17,12 +19,16 @@ const props = withDefaults(defineProps<{
   isTop: true,
   author: '小明',
   date: '2021-09-01',
+  channel: '新闻',
 })
 
 // 文章跳转
 const router = useRouter()
 function handleDetail(index: number) {
   router.push(`/article/${index}`)
+}
+function handleErrorLoad(item: string) {
+  // 如果图片加载失败，显示默认图片
 }
 </script>
 
@@ -46,7 +52,7 @@ function handleDetail(index: number) {
             :key="index"
             class="col-span-1 w-full h-full overflow-hidden"
         >
-          <img :src="item" alt="" loading="lazy" class="w-full h-full object-cover">
+          <img :src="item" alt="" loading="lazy" @error="handleErrorLoad(item)" class="w-full h-full z-[299] object-cover">
         </div>
       </div>
       <div
@@ -77,6 +83,13 @@ function handleDetail(index: number) {
             class="text-[10px] h-full align-middle text-gray-500"
         >
           {{ date ? date : '暂无日期'}}
+        </div>
+        <div
+            v-if="channel"
+            class="text-[10px] font-bold text-red-500"
+        >
+          <van-divider vertical />
+          {{ channel }}
         </div>
       </div>
     </div>

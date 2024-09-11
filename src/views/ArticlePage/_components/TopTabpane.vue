@@ -64,7 +64,7 @@ onMounted(() => {
   <div class="w-full h-full flex">
     <van-tabs
         v-model:active="active"
-        class="w-full"
+        class="w-full z-[999]"
         @click-tab="handleChange"
     >
       <van-tab

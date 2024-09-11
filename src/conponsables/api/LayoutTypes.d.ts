@@ -18,5 +18,6 @@ export declare namespace LayoutTypes {
         desc?: string;
         date: string;
         url?: string;
+        channel?: string;
     }
 }

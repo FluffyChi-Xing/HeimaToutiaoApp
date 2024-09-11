@@ -3,6 +3,7 @@ import {onMounted, ref, watch} from 'vue'
 import { useRoute } from "vue-router";
 import type {LayoutTypes} from "@/conponsables/api/LayoutTypes";
 import {$stores} from "@/conponsables/stores";
+// import {$apis} from "@/conponsables/apis";
 
 
 
@@ -31,7 +32,13 @@ onMounted(() => {
   getParams()
   getInfo()
   checkInfo()
+  // await test()
 })
+// async function test() {
+//   await $apis.testApis().then((res: any) => {
+//     console.log(res)
+//   })
+// }
 watch(() => route.params.id , () => {
   getParams()
   getInfo()
