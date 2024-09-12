@@ -18,3 +18,11 @@ export function getArticleList(url: string, maxBehotTime: Date, minBehotTime: Da
     }
     return $request(requestUrl, 'POST' as requestEnums, null,  data);
 }
+
+export function getArticleContent(id: number) {
+    const requestUrl = base + '/api/v1/article/find'
+    const params = {
+        id: id
+    }
+    return $request(requestUrl, 'GET' as requestEnums, params, null);
+}

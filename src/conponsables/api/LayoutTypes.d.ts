@@ -10,7 +10,7 @@ export declare namespace LayoutTypes {
         url?: string;
     }
     export interface ArticleCardTypes {
-        id: number;
+        id: BigInt;
         imgUrl?: string[];
         title: string;
         isTop: boolean;

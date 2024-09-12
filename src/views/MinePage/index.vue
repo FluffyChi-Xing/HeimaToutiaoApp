@@ -2,8 +2,11 @@
 import { ref } from 'vue';
 import type {UserTypes} from "@/conponsables/api/UserTypes";
 import UserAvatar from "@/views/MinePage/_components/UserAvatar.vue";
+import { useRouter } from 'vue-router';
 
 
+
+const router = useRouter()
 /** ===== 用户信息-start ===== **/
 const defaultList = [
   {
@@ -52,6 +55,27 @@ const cardAList = ref<cardAtypes[]>([
   }
 ])
 /** ===== 卡片栏A-end ===== **/
+
+/** ===== 卡片A跳转-start ===== **/
+// 消息中心
+function handleRouter(item: string) {
+  // console.log(item)
+  switch (item) {
+    case '消息通知':
+      router.push('/notice')
+      break
+    case '我的收藏':
+      router.push('/collection')
+      break
+    case '浏览历史':
+      router.push('/history')
+      break
+    case '我的作品':
+      router.push('/works')
+      break
+  }
+}
+/** ===== 卡片A跳转-end ===== **/
 </script>
 
 <template>
@@ -83,6 +107,7 @@ const cardAList = ref<cardAtypes[]>([
             v-for="(item, index) in cardAList"
             :key="index"
             class="w-full h-full flex px-4"
+            @click="handleRouter(item.label)"
         >
           <div class="w-full h-full py-4 flex flex-col items-center">
             <div class="w-full h-1/2 flex justify-center">

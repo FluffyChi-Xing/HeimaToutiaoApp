@@ -1,10 +1,15 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import {onMounted, ref} from 'vue'
+import { useRoute } from "vue-router";
 import TopBanner from "@/components/TopBanner.vue";
 import DetailTemplate from "@/views/ArticleDetail/_components/DetailTemplate.vue";
+import {$apis} from "@/conponsables/apis";
 
 
 
+
+const route = useRoute()
+const params = ref<string>()
 /** ===== 文章详情初始化-start ===== **/
 const title = ref<string>('震惊 ! 以下几件事前端开发一定要尽早了解 !')
 const desc = ref<string>('最近在用 Vue3 写一个开源的商城项目，开源后让大家也可以用现成的 Vue3 大型商城项目源码来练练手，目前处于开发阶段，过程中用到了 Vant3.0，于是就整理了这篇文章来讲一下如何使用 Vue3.0 + Vant 3.0 搭建种子项目。\n' +
@@ -13,6 +18,23 @@ const desc = ref<string>('最近在用 Vue3 写一个开源的商城项目，开
     '\n' +
     '接下来我将带大家手动搭建一个带有组件库 Vant、最新路由 Vue-Router 4.0、最新状态管理插件 Vuex 4.0 的一个 Vue 3.0 种子项目。'
 )
+/** ===== 文章详情初始化-end ===== **/
+
+/** ===== 文章详情-start ===== **/
+function getParams() {
+  params.value = String(route.params.id)
+}
+async function getContent() {
+  // await $apis.getArticleContent(BigInt(params.value) + 2).then((res: string) => {
+  //   console.log(res)
+  // })
+  console.log('获取文章详情')
+}
+onMounted(async () => {
+  getParams()
+  await getContent()
+})
+/** ===== 文章详情-end ===== **/
 </script>
 
 <template>

@@ -3,7 +3,7 @@ import { useRouter } from "vue-router";
 import {ref} from "vue";
 
 const props = withDefaults(defineProps<{
-  id?: number;
+  id?: BigInt;
   imgUrl?: string[];
   title?: string;
   isTop?: boolean;
@@ -13,7 +13,6 @@ const props = withDefaults(defineProps<{
   url?: string;
   channel?: string;
 }>(), {
-  id: -1,
   imgUrl: () => ['https://picsum.photos/200/300?1', 'https://picsum.photos/200/300?2'],
   title: '这是一个大新闻 !',
   isTop: true,
@@ -24,16 +23,17 @@ const props = withDefaults(defineProps<{
 
 // 文章跳转
 const router = useRouter()
-function handleDetail(index: number) {
+function handleDetail(index: any) {
   router.push(`/article/${index}`)
 }
+// TODO: 未完成
 function handleErrorLoad(item: string) {
   // 如果图片加载失败，显示默认图片
 }
 </script>
 
 <template>
-  <div class="w-full h-auto flex flex-col px-2" @click="handleDetail(props.id)">
+  <div class="w-full h-auto flex flex-col px-2" @click="handleDetail(BigInt(props.id))">
     <div class="w-full h-auto flex flex-col">
       <!-- title -->
       <div

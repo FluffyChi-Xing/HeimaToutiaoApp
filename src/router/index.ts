@@ -4,6 +4,11 @@ import 'nprogress/nprogress.css'
 import LayoutPage from "@/layout/LayoutPage.vue";
 import Recommend from "@/views/ArticlePage/_components/Recommend.vue";
 import ActivityPage from "@/views/ArticlePage/_components/ActivityPage.vue";
+import NoticeCenter from "@/views/MinePage/_components/NoticeCenter.vue";
+import CollectionCenter from "@/views/MinePage/_components/CollectionCenter.vue";
+import HistoryPage from "@/views/MinePage/_components/HistoryPage.vue";
+import MyWork from "@/views/MinePage/_components/MyWork.vue";
+import SettingCenter from "@/views/MinePage/_components/SettingCenter.vue";
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -56,6 +61,31 @@ const router = createRouter({
           path: '/login',
           name: 'login',
           component: () => import('@/views/LoginPage/index.vue')
+      },
+      {
+          path: '/notice',
+          name: 'notice',
+          component: NoticeCenter
+      },
+      {
+          path: '/collection',
+          name: 'collection',
+          component: CollectionCenter
+      },
+      {
+          path: '/history',
+          name: 'history',
+          component: HistoryPage
+      },
+      {
+          path: '/works',
+          name: 'works',
+          component: MyWork
+      },
+      {
+          path: '/setting',
+          name: 'setting',
+          component: SettingCenter
       }
   ]
 })
