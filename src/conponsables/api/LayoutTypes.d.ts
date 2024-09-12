@@ -20,4 +20,8 @@ export declare namespace LayoutTypes {
         url?: string;
         channel?: string;
     }
+    export interface channelsType {
+        id?: number;
+        label: string;
+    }
 }

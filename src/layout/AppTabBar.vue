@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {onMounted, ref, watch} from 'vue'
-import {LayoutTypes} from "@/conponsables/api/LayoutTypes";
+import type {LayoutTypes} from "@/conponsables/api/LayoutTypes";
 import { useRouter, useRoute } from "vue-router";
 
 
