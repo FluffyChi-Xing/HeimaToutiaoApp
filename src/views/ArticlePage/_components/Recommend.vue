@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import {onMounted, ref} from 'vue';
 import ArticleCardTemplate from "@/components/ArticleCardTemplate.vue";
-import {showToast} from "vant";
 import type {LayoutTypes} from "@/conponsables/api/LayoutTypes";
 import {$apis} from "@/conponsables/apis";
 

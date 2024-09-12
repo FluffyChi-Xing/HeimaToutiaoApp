@@ -42,6 +42,9 @@ function handleHighlight(index: string) {
     case '/home':
       defaultActive.value = '/home'
       break
+    case '/home/part':
+      defaultActive.value = '/home'
+      break
     case '/category':
       defaultActive.value = '/category'
       break
@@ -56,7 +59,7 @@ function handleHighlight(index: string) {
 onMounted(() => {
   handleHighlight(route.path)
 })
-watch(() => route.fullPath, () => {
+watch(() => route.path, () => {
   handleHighlight(route.path)
 })
 /** ===== app tab bar-end ===== **/

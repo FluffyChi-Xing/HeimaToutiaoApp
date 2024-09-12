@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import TopBanner from "@/views/ArticleDetail/_components/TopBanner.vue";
+import TopBanner from "@/components/TopBanner.vue";
 import DetailTemplate from "@/views/ArticleDetail/_components/DetailTemplate.vue";
 
 

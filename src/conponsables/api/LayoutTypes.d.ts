@@ -24,4 +24,13 @@ export declare namespace LayoutTypes {
         id?: number;
         label: string;
     }
+
+    export interface inforTypes {
+        id?: number;
+        title: string;
+        img?: string;
+        agree?: number;
+        date?: string;
+        comment?: number;
+    }
 }

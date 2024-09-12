@@ -4,6 +4,17 @@ import { ref } from "vue";
 import {showToast} from "vant";
 
 
+
+withDefaults(defineProps<{
+  share?: boolean,
+  title?: string
+}>(), {
+  share: true
+})
+
+
+
+
 // 返回
 const router = useRouter()
 function goBack() {
@@ -31,11 +42,20 @@ function handleShare() {
 </script>
 
 <template>
-  <div class="w-full h-16 absolute banner px-4 top-0 flex items-center bg-white justify-between">
+  <div class="w-full h-16 absolute banner px-4 top-0 flex items-center bg-white">
     <div class="w-auto h-auto flex" @click="goBack">
       <van-icon size="20" name="arrow-left" />
     </div>
-    <div class="w-auto h-auto flex">
+    <div
+        v-if="title"
+        class="w-auto h-auto align-middle text-xl mx-auto"
+    >
+      {{ title }}
+    </div>
+    <div
+        v-if="share"
+        class="w-auto h-auto flex ml-auto"
+    >
       <van-icon size="20" name="ellipsis" @click="handleShare" />
     </div>
     <van-share-sheet
