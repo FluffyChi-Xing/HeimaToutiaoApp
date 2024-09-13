@@ -22,7 +22,7 @@ withDefaults(defineProps<{
   >
     <div
         class="w-full h-full flex flex-col"
-        :class="img ? 'col-span-3' : ''"
+        :class="img ? 'col-span-2' : ''"
     >
       <!-- title -->
       <div class="w-full h-auto max-h-1/2 mb-4 whitespace-pre-line text-ellipsis text-xl font-bold">
@@ -39,9 +39,9 @@ withDefaults(defineProps<{
     </div>
     <div
         v-if="img"
-        class="col-span-1 w-full h-full"
+        class="col-span-2 w-full h-full flex"
     >
-      <img :src="img" alt="" loading="lazy" class="w-full h-full object-cover">
+      <img :src="img" alt="" loading="lazy" class="w-full max-h-24 object-cover">
     </div>
   </div>
   <van-divider />
